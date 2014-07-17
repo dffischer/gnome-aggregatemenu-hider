@@ -1,0 +1,17 @@
+const item = imports.ui.main.panel.statusArea.aggregateMenu.${item}.actor;
+
+let registration;
+
+function hide() {
+  item.hide();
+}
+
+function enable() {
+  registration = item.connect('notify::visible', hide);
+  hide()
+}
+
+function disable() {
+  item.disconnect(registration);
+  item.show();
+}
