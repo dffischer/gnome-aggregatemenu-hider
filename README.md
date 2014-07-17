@@ -4,6 +4,10 @@ This is a generator for Gnome Shell extensions that hide items from the aggregat
 
 ## Installation
 
+Archlinux users have [packages in the AUR for all generated extensions](https://aur.archlinux.org/pkgbase/gnome-shell-extension-aggregatemenu-hider/).
+
+### Manual Compilation
+
 This project uses [waf](https://code.google.com/p/waf/) to compile and install.
 
 ```bash
