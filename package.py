@@ -54,6 +54,7 @@ def dist(ctx):
   ctx(rule='tar cf ${TGT} -C ${TGT[0].parent.abspath()} ${SRC[0].parent.name}',
       source='patched/' + appname + '/.AURINFO'
             ' patched/' + appname + '/PKGBUILD',
-      target='patched/' + package)
+      target='patched/' + package,
+      install_path='${DESTDIR}')
 
 setattr(g_module, 'build', dist)
