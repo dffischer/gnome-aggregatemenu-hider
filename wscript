@@ -3,8 +3,7 @@
 from csv import DictReader
 
 def options(ctx):
-  ctx.load('template', tooldir='.')
-  ctx.load('gnu_dirs')
+  configure(ctx)
 
 def configure(ctx):
   ctx.load('template', tooldir='.')
