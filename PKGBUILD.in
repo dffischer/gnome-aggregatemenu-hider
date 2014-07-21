@@ -3,7 +3,7 @@
 # To only build some of the extensions, remove
 # the unwanted ones from the $extensions variable.
 extensions=('brightness' 'volume' 'user' 'location')
-pkgbase='gnome-shell-extension-aggregatemenu-hider'
+pkgbase='$appname'
 for e in ${extensions[@]}; do
   local pkg=gnome-shell-extension-hide-$e
   pkgname+=($pkg)
@@ -12,9 +12,9 @@ for e in ${extensions[@]}; do
   }"
 done
 
-pkgver=1
-pkgrel=1
 pkgdesc="A generator for Gnome Shell extensions that hide items from the aggregate menu."
+pkgver=$major
+pkgrel=$minor
 arch=(any)
 url='https://github.com/dffischer/gnome-aggregatemenu-hider'
 license=(GPLv3)
@@ -37,4 +37,3 @@ package() {
   waf --destdir="$pkgdir" --targets=$1 install
   pkgdesc="$(grep -Po '(?<="description": ").*(?=")' build/hide-$1@*/metadata.json)"
 }
-
