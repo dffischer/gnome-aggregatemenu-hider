@@ -9,7 +9,7 @@ from operator import itemgetter
 
 class template(Task):
   def run(self):
-    self.outputs[0].write(Template(self.inputs[0].read()).substitute(self.generator.mapping))
+    self.outputs[0].write(Template(self.inputs[0].read()).safe_substitute(self.generator.mapping))
 
   def sig_vars(self):
     super().sig_vars()
