@@ -23,7 +23,7 @@ def process_template(gen, source):
     out_dir = gen.bld.bldnode.find_or_declare(out_dir)
     out_dir.mkdir()
   else:
-    out_dir = gen.bld.bldnode
+    out_dir = source.parent.get_bld()
   target = out_dir.make_node(source.change_ext('', ext_in='.in').name)
   gen.create_task('template', source, target)
   inst_to = getattr(gen, 'install_path', None)
