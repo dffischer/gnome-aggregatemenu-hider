@@ -14,6 +14,7 @@ done
 
 pkgver=1
 pkgrel=1
+pkgdesc="A generator for Gnome Shell extensions that hide items from the aggregate menu."
 arch=(any)
 url='https://github.com/dffischer/gnome-aggregatemenu-hider'
 license=(GPLv3)
@@ -34,5 +35,6 @@ build() {
 package() {
   cd $pkgbase
   waf --destdir="$pkgdir" --targets=$1 install
+  pkgdesc="$(grep -Po '(?<="description": ").*(?=")' build/hide-$1@*/metadata.json)"
 }
 
