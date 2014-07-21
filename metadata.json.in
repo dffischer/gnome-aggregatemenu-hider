@@ -3,5 +3,5 @@
   "uuid": "${uuid}",
   "url": "https://github.com/dffischer/gnome-aggregatemenu-hider",
   "name": "Hide ${name}",
-  "description": "${description}"
+  "description": "${description}."
 }

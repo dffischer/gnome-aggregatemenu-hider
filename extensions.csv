@@ -1,5 +1,5 @@
 name,author,item,description
-Brightness Slider,xzs,_brightness._item,Hides the brightness slider from the aggregate menu.
-Location Options,xzs,_location._item,Hides the location options from the aggregate menu.
-User Switch,xzs,_system._switchUserSubMenu,"Hides the switch user sub menu from the aggregated menu, removing the logout option. Handy for a single-user system."
-Volume Controls,xzs,_volume._volumeMenu,Hides the volume controls from the aggregate menu. The volume can still be adjusted via hardware keys.
+Brightness Slider,xzs,_brightness._item,Hides the brightness slider from the aggregate menu
+Location Options,xzs,_location._item,Hides the location options from the aggregate menu
+User Switch,xzs,_system._switchUserSubMenu,"Hides the switch user sub menu from the aggregated menu, removing the logout option. Handy for a single-user system"
+Volume Controls,xzs,_volume._volumeMenu,Hides the volume controls from the aggregate menu. The volume can still be adjusted via hardware keys
