@@ -13,14 +13,15 @@ def configure(ctx):
 def build(ctx):
   with open('extensions.csv') as f:
     for extension in DictReader(f):
-      name = extension['name'].partition(' ')[0]
-      uuid = 'hide-' + name + '@' + extension['author']
+      name = extension['name']
+      shortname = name.partition(' ')[0]
+      uuid = 'hide-' + shortname + '@' + extension['author']
       ctx(source='extension.js.in metadata.json.in',
           mapping={
             'name': name,
             'uuid': uuid,
             'item': extension['item'],
             'description': extension['description']},
-          name=name,
+          name=shortname,
           out_dir=uuid,
           install_path='${DATAROOTDIR}/gnome-shell/extensions/' + uuid)
