@@ -42,17 +42,17 @@ def dist(ctx):
       name='mkaurball')
   ctx(rule='tar xf ${SRC[0]} -C extract',
       source=package,
-      target='extract/' + appname + '/.AURINFO'
+      target='extract/' + appname + '/.SRCINFO'
             ' extract/' + appname + '/PKGBUILD')
   ctx(features='aurinfo',
-      source='extract/' + appname + '/.AURINFO'
+      source='extract/' + appname + '/.SRCINFO'
             ' extensions.csv',
-      target='patched/' + appname + '/.AURINFO')
+      target='patched/' + appname + '/.SRCINFO')
   ctx(rule='cp ${SRC} ${TGT}',
       source='extract/' + appname + '/PKGBUILD',
       target='patched/' + appname + '/PKGBUILD')
   ctx(rule='tar cf ${TGT} -C ${TGT[0].parent.abspath()} ${SRC[0].parent.name}',
-      source='patched/' + appname + '/.AURINFO'
+      source='patched/' + appname + '/.SRCINFO'
             ' patched/' + appname + '/PKGBUILD',
       target='patched/' + package,
       install_path='${DESTDIR}')
