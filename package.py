@@ -31,22 +31,21 @@ def dist(ctx):
   appname = getattr(g_module, APPNAME)
   major, _, minor = getattr(g_module, VERSION).rpartition('.')
   ctx(source='PKGBUILD.in',
-      out_dir='patched/' + appname,
       mapping={
         'appname': appname,
         'major': major,
         'minor': minor})
   ctx(rule='mksrcinfo -o ${TGT} ${SRC}',
-      source='patched/' + appname + '/PKGBUILD',
+      source='PKGBUILD',
       target='SRCINFO.in',
       name='mksrcinfo')
   ctx(features='aurinfo',
       source='SRCINFO.in extensions.csv',
-      target='patched/' + appname + '/.SRCINFO')
-  ctx(rule='tar cf ${TGT} -C ${TGT[0].parent.abspath()} ${SRC[0].parent.name}',
-      source='patched/' + appname + '/.SRCINFO'
-            ' patched/' + appname + '/PKGBUILD',
-      target='patched/gnome-shell-extension-aggregatemenu-hider-{}-{}.src.tar.gz'
+      target='.SRCINFO')
+  ctx(rule='tar cf ${TGT} -C ${bld.bldnode.abspath()} '
+          '--transform="s|^|' + appname + '/|" ${SRC}',
+      source='PKGBUILD .SRCINFO ',
+      target='gnome-shell-extension-aggregatemenu-hider-{}-{}.src.tar.gz'
         .format(major, minor),
       install_path='${DESTDIR}')
 
