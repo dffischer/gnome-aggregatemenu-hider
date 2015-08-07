@@ -30,31 +30,24 @@ def aurinfo(gen):
 def dist(ctx):
   appname = getattr(g_module, APPNAME)
   major, _, minor = getattr(g_module, VERSION).rpartition('.')
-  package = 'gnome-shell-extension-aggregatemenu-hider-{}-{}.src.tar.gz'.format(major, minor)
   ctx(source='PKGBUILD.in',
+      out_dir='patched/' + appname,
       mapping={
         'appname': appname,
         'major': major,
         'minor': minor})
-  ctx(rule='mkaurball -fp ${SRC}',
-      source='PKGBUILD',
-      target=package,
-      name='mkaurball')
-  ctx(rule='tar xf ${SRC[0]} -C extract',
-      source=package,
-      target='extract/' + appname + '/.SRCINFO'
-            ' extract/' + appname + '/PKGBUILD')
+  ctx(rule='mksrcinfo -o ${TGT} ${SRC}',
+      source='patched/' + appname + '/PKGBUILD',
+      target='SRCINFO.in',
+      name='mksrcinfo')
   ctx(features='aurinfo',
-      source='extract/' + appname + '/.SRCINFO'
-            ' extensions.csv',
+      source='SRCINFO.in extensions.csv',
       target='patched/' + appname + '/.SRCINFO')
-  ctx(rule='cp ${SRC} ${TGT}',
-      source='extract/' + appname + '/PKGBUILD',
-      target='patched/' + appname + '/PKGBUILD')
   ctx(rule='tar cf ${TGT} -C ${TGT[0].parent.abspath()} ${SRC[0].parent.name}',
       source='patched/' + appname + '/.SRCINFO'
             ' patched/' + appname + '/PKGBUILD',
-      target='patched/' + package,
+      target='patched/gnome-shell-extension-aggregatemenu-hider-{}-{}.src.tar.gz'
+        .format(major, minor),
       install_path='${DESTDIR}')
 
 setattr(g_module, 'build', dist)
