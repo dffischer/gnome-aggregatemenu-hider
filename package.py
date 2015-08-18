@@ -34,7 +34,8 @@ def dist(ctx):
       mapping={
         'appname': appname,
         'major': major,
-        'minor': minor})
+        'minor': minor},
+      target='PKGBUILD')
   ctx(rule='mksrcinfo -o ${TGT} ${SRC}',
       source='PKGBUILD',
       target='SRCINFO.in',
