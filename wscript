@@ -9,7 +9,8 @@ def options(ctx):
   configure(ctx)
   def switch_to_package(option, opt_str, value, parser):
     ctx.load('package', tooldir='.')
-  ctx.add_option("--package", action='callback', callback=switch_to_package)
+  ctx.add_option("--package", action='callback', callback=switch_to_package,
+      help="generate files for AUR distribution instead of extension")
 
 def configure(ctx):
   ctx.load('template', tooldir='.')
