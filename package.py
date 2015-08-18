@@ -5,7 +5,7 @@ from waflib.Context import g_module, APPNAME, VERSION
 from re import compile
 
 class patch_aurinfo(Task):
-  package = compile('pkgname = gnome-shell-extension-hide-(.*)\n')
+  package = compile('pkgname = gnome-shell-extension-hide-(.*)-git\n')
   def run(self):
     with open(self.inputs[1].abspath(), 'r') as csv:
       descriptions = {

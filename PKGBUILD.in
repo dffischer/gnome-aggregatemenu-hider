@@ -3,11 +3,9 @@
 # To only build some of the extensions, remove
 # the unwanted ones from the $extensions variable.
 extensions=('brightness' 'volume' 'user' 'location')
-pkgbase='$appname'
-pkgname='$appname'
-unset pkgname
+pkgbase='$appname-git'
 for e in ${extensions[@]}; do
-  local pkg=gnome-shell-extension-hide-$e
+  local pkg=gnome-shell-extension-hide-$e-git
   pkgname+=($pkg)
   eval "package_${pkg}() {
     package ${e^*}
