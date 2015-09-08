@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 APPNAME = 'gnome-shell-extension-aggregatemenu-hider'
-VERSION = '3.3'
+VERSION = '3.4'
 
 from csv import DictReader
 
