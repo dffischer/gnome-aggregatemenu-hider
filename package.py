@@ -36,7 +36,7 @@ def dist(ctx):
         'major': major,
         'minor': minor},
       target='PKGBUILD')
-  ctx(rule='mksrcinfo -o ${TGT} ${SRC}',
+  ctx(rule='makepkg --printsrcinfo -p ${SRC} > ${TGT}',
       source='PKGBUILD',
       target='SRCINFO.in',
       name='mksrcinfo')
